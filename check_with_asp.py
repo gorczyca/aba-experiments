@@ -1,0 +1,32 @@
+import pandas as pd
+import subprocess
+
+BASH_SCRIPT = 'bash run_asp.sh'
+INPUT_CSV = './our_output.csv'
+
+def get_asp_output(file, query):
+    output = subprocess.check_output(args=[f'{BASH_SCRIPT} {file} {query}'],shell=True, stderr=subprocess.STDOUT)
+    split = output.decode().split()
+    verdict = 'yes' if split[0] == 'SATISFIABLE' else 'no'
+    duration = int(float(split[-1][:-1]) * 1000)
+    return verdict, duration
+
+if __name__ == '__main__':
+    non_trivial_df = pd.read_csv(INPUT_CSV)
+
+    output_df = pd.DataFrame(columns=['goal', 'instance', 'verdict', 'duration'])
+
+    diffs_df = pd.DataFrame(columns=['goal', 'instance', 'ruleDD_verdict', 'asp_verdict'])
+
+    for index, row in non_trivial_df.iterrows():
+        asp_verdict, asp_duration = get_asp_output(row.instance, row.goal)
+
+        output_df.loc[index] = [row.goal, row.instance, asp_verdict, asp_duration]
+
+        if row.verdict != 'timeout' and row.verdict != asp_verdict:
+           diffs_df.loc[index] = [row.goal, row.instance, row.verdict, asp_verdict]
+
+    output_df.to_csv('aspforaba_output.csv', index=False)
+    diffs_df.to_csv('diffs.csv', index=False)
+
+

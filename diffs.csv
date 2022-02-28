@@ -1,0 +1,7 @@
+goal,instance,ruleDD_verdict,asp_verdict
+a1,exp_acyclic_depvary_step1_batch_yyy03.pl,yes,no
+c3,exp_acyclic_indvary1_step7_batch_yyy06.pl,yes,no
+f2,exp_acyclic_indvary3_step1_batch_yyy09.pl,yes,no
+a1,exp_cycles_depvary_step1_batch_yyy06.pl,yes,no
+e1,exp_cycles_indvary1_step6_batch_yyy10.pl,yes,no
+e1,exp_cycles_indvary3_step2_batch_yyy03.pl,yes,no
