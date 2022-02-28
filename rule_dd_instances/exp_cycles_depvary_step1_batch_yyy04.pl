@@ -1,9 +1,9 @@
-assumption(a1).
-assumption(b1).
-assumption(c1).
-assumption(d1).
-assumption(e1).
-assumption(f1).
+asm(a1).
+asm(b1).
+asm(c1).
+asm(d1).
+asm(e1).
+asm(f1).
 contrary(a1,b1).
 contrary(b1,s1).
 contrary(c1,e1).

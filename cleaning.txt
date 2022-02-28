@@ -10,3 +10,6 @@ find . -name '*.pl' -exec sed -ri '/^goal/d' {} \;
 
 % replace asm by assumption
 find . -name '*.pl' -exec sed -i 's/asm/assumption/g' {} \;
+
+% replace in the other direction
+find . -name '*.pl' -exec sed -i 's/assumption/asm/g' {} \;
