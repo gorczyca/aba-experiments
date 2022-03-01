@@ -4,8 +4,8 @@ import pathlib
 import time
 
 
-BASH_SCRIPT = 'run_abagraph.sh'
-INPUT_CSV = './ruledd_03_01.csv'
+BASH_SCRIPT = './solvers/abagraph/run_abagraph.sh'
+INPUT_CSV = './outputs/03_01/ruledd_03_01.csv'
 # INPUT_CSV = './ruledd_1_03_part.csv'
 
 TIMEOUT = 120   # seconds
@@ -52,7 +52,7 @@ if __name__ == '__main__':
         if row.verdict != 'timeout' and row.verdict != abagraph_verdict:
            diffs_df.loc[index] = [row.goal, row.instance, row.verdict, abagraph_verdict]
 
-    output_df.to_csv('abagraph_output_03_01.csv', index=False)
-    diffs_df.to_csv('diffs_abagraph_03_01.csv', index=False)
+    output_df.to_csv('tttabagraph_output_03_01.csv', index=False)
+    diffs_df.to_csv('tttdiffs_abagraph_03_01.csv', index=False)
 
 

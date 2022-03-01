@@ -1,11 +1,11 @@
 import pandas as pd
 import subprocess
 
-BASH_SCRIPT = 'bash run_asp.sh'
-INPUT_CSV = './ruledd_03_01.csv'
+BASH_SCRIPT = './solvers/aspforaba/run_asp.sh'
+INPUT_CSV = './outputs/03_01/ruledd_03_01.csv'
 
 def get_asp_output(file, query):
-    output = subprocess.check_output(args=[f'{BASH_SCRIPT} {file} {query}'],shell=True, stderr=subprocess.STDOUT)
+    output = subprocess.check_output(args=[f'bash {BASH_SCRIPT} {file} {query}'],shell=True, stderr=subprocess.STDOUT)
     split = output.decode().split()
     verdict = 'yes' if split[0] == 'SATISFIABLE' else 'no'
     duration = int(float(split[-1][:-1]) * 1000)
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         if row.verdict != 'timeout' and row.verdict != asp_verdict:
            diffs_df.loc[index] = [row.goal, row.instance, row.verdict, asp_verdict]
 
-    output_df.to_csv('aspforaba_output_03_01.csv', index=False)
-    diffs_df.to_csv('diffs_1_03.csv', index=False)
+    output_df.to_csv('tttaspforaba_output_03_01.csv', index=False)
+    diffs_df.to_csv('tttdiffs_1_03.csv', index=False)
 
 
