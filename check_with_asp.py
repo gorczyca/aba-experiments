@@ -2,7 +2,7 @@ import pandas as pd
 import subprocess
 
 BASH_SCRIPT = 'bash run_asp.sh'
-INPUT_CSV = './our_results_1_03.csv'
+INPUT_CSV = './ruledd_03_01.csv'
 
 def get_asp_output(file, query):
     output = subprocess.check_output(args=[f'{BASH_SCRIPT} {file} {query}'],shell=True, stderr=subprocess.STDOUT)
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         if row.verdict != 'timeout' and row.verdict != asp_verdict:
            diffs_df.loc[index] = [row.goal, row.instance, row.verdict, asp_verdict]
 
-    output_df.to_csv('aspforaba_output_1_03.csv', index=False)
+    output_df.to_csv('aspforaba_output_03_01.csv', index=False)
     diffs_df.to_csv('diffs_1_03.csv', index=False)
 
 

@@ -3,7 +3,7 @@ import itertools
 import re
 
 
-INSTANCES_DIR = 'rule_dd_instances/'
+INSTANCES_DIR = 'instances/rule_dd_instances/'
 OUTPUT_PATH = './cleaned_rules/' 
 
 
